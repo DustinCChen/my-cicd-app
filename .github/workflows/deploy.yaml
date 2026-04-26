@@ -21,16 +21,16 @@ jobs:
       - name: 1. 拉取最新代码
         uses: actions/checkout@v4
 
-      - name: 2. 配置 Node.js 环境
-        uses: actions/setup-node@v4
+      - name: 2. 配置 Bun 环境
+        uses: oven-sh/setup-bun@v1  # 使用官方的 Bun 自动化动作
         with:
-          node-version: 24  # 指定 Node 版本
+          bun-version: latest
 
       - name: 3. 安装依赖
-        run: npm install
+        run: bun install
 
       - name: 4. 打包编译项目
-        run: npm run build
+        run: bun run build
 
       - name: 5. 提取产物准备发布
         uses: actions/upload-pages-artifact@v3
